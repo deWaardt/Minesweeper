@@ -203,25 +203,28 @@ public class Board extends JFrame {
 	}
 
 	private void leftClick(Cell cell) {
-		if (!cell.isFlagged()) {
-			if (cell.isBomb()) {
-				cell.clickExplode();
-				looseGame();
-			}
-			else {
-				final int numNeighbors = cell.getNumBombNeighbors();
-				if (numNeighbors == 0) {
-					unlockNeighbors(cell);
-				}
-				else {
-					cell.unlock();
-				}
-				numCellsToUncover--;
-				if (numCellsToUncover == 0) {
-					winGame();
-				}
-			}
-		}
+		cell.makeBomb();
+		cell.clickExplode();
+		looseGame();
+		//if (!cell.isFlagged()) {
+		//	if (cell.isBomb()) {
+		//		cell.clickExplode();
+		//		looseGame();
+		//	}
+		//	else {
+		//		final int numNeighbors = cell.getNumBombNeighbors();
+		//		if (numNeighbors == 0) {
+		//			unlockNeighbors(cell);
+		//		}
+		//		else {
+		//			cell.unlock();
+		//		}
+		//		numCellsToUncover--;
+		//		if (numCellsToUncover == 0) {
+		//			winGame();
+		//		}
+		//	}
+		//}
 	}
 
 	private void rightAndLeftClick(Cell cell) {
@@ -371,7 +374,8 @@ public class Board extends JFrame {
 					}
 					else {
 						cell.setIsUnlocked(true);
-					}
+				
+					}				
 				}
 
 			}

@@ -23,7 +23,7 @@ public class Cell extends JButton {
 	private static final ImageIcon FLAGGED_CELL = new ImageIcon(Cell.class.getResource("pics/flag.png"));
 	private static final ImageIcon UNFLAGGED_CELL = new ImageIcon(Cell.class.getResource(""));
 
-	private final boolean isBomb;
+	private boolean isBomb;
 	private boolean flagged;
 	private boolean unlocked;
 	private final int row;
@@ -38,6 +38,10 @@ public class Cell extends JButton {
 			}
 		}
 	});
+	
+	public final void makeBomb() {
+		isBomb = true;
+	}
 
 	public Cell(boolean isBomb, int row, int col, MouseAdapter cellMouseAdapter) {
 		setBackground(Color.LIGHT_GRAY);
